@@ -1,0 +1,40 @@
+public class Solution {
+    public int maxScore(String s) {
+        int n = s.length();
+        
+        // Count the total number of ones in the string
+        int rightOnes = 0;
+        for (int i = 0; i < n; i++) {
+            if (s.charAt(i) == '1') {
+                rightOnes++;
+            }
+        }
+
+        // Initialize variables
+        int leftZeros = 0;
+        int maxScore = 0;
+
+        // Iterate over the string and calculate scores
+        for (int i = 0; i < n - 1; i++) {  // n-1 to ensure both substrings are non-empty
+            if (s.charAt(i) == '0') {
+                leftZeros++;  // Increment leftZeros if we encounter a '0' in the left part
+            } else {
+                rightOnes--;  // Decrement rightOnes if we encounter a '1' in the left part
+            }
+
+            // Calculate the score for the current split
+            int score = leftZeros + rightOnes;
+            maxScore = Math.max(maxScore, score);  // Update the maximum score
+        }
+
+        return maxScore;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        
+        // Test case
+        String s = "011101";
+        System.out.println(solution.maxScore(s));  // Expected output: 4
+    }
+}
