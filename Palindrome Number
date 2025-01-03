@@ -1,0 +1,14 @@
+public class TestPalindrome {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        int x = 121;
+        System.out.println(solution.isPalindrome(x));  // Kết quả: true
+
+        x = -121;
+        System.out.println(solution.isPalindrome(x));  // Kết quả: false
+
+        x = 10;
+        System.out.println(solution.isPalindrome(x));  // Kết quả: false
+    }
+}
